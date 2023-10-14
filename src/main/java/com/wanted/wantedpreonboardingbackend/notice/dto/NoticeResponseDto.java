@@ -1,5 +1,6 @@
 package com.wanted.wantedpreonboardingbackend.notice.dto;
 
+import com.wanted.wantedpreonboardingbackend.notice.entity.Notice;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,5 +31,16 @@ public class NoticeResponseDto {
   private String content;
   private List<Long> noticeList; // 회사가 올린 다른 채용 공고 id 리스트
 
+
+  public NoticeResponseDto(Notice notice) {
+    this.id = notice.getId();
+    this.name = notice.getCompany().getName();
+    this.nation = notice.getCompany().getNation();
+    this.region = notice.getCompany().getRegion();
+    this.position = notice.getPosition();
+    this.reward = notice.getReward();
+    this.skill = notice.getSkill();
+    this.content = notice.getContent();
+  }
 
 }

@@ -24,9 +24,9 @@ public class NoticeController {
 
   private final NoticeServiceImpl noticeService;
 
-  /**
+  /** OK
    * 1번 기능 : 채용 공고를 등록하는 메서드
-   * url : http://localhost:8081/api/notice
+   * url : http://localhost:8081/api/notice [POST]
    *
    * @param requestDto 채용 공고를 등록할 데이터
    */
@@ -36,8 +36,9 @@ public class NoticeController {
   }
 
 
-  /**
+  /** OK
    * 2번 기능 : 채용 공고를 수정하는 메서드
+   * url : http://localhost:8081/api/notice [PUT]
    *
    * @param requestDto 채용 공고를 수정할 데이터
    */
@@ -47,11 +48,13 @@ public class NoticeController {
   }
 
 
-  /**
+  /** OK
    * 3번 기능 : body로 전달 받은 id 값에 따른 공고 삭제 메서드
+   * url : http://localhost:8081/api/notice [DELETE]
+   *
    * url이 아닌 body로 전달을 받은 이유는 추후 XSS 공격을 우려하여 보안상의 문제를 염려하여 선택
    *
-   * @param id 삭제할 공고 id 값
+   * @param requestDto 삭제할 공고 id 값
    */
   @DeleteMapping("/notice")
   public void deleteNotice(@RequestBody NoticeRequestDto requestDto) {
@@ -61,6 +64,7 @@ public class NoticeController {
 
   /**
    * 4-1번 기능 : 채용 공고 목록 조회 메서드
+   * url : http://localhost:8081/api/notice [GET]
    *
    * @return 채용 공고 목록
    */

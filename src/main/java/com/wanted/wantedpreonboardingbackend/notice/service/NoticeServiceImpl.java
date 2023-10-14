@@ -7,6 +7,7 @@ import com.wanted.wantedpreonboardingbackend.notice.entity.Company;
 import com.wanted.wantedpreonboardingbackend.notice.entity.Notice;
 import com.wanted.wantedpreonboardingbackend.notice.repository.CompanyRepository;
 import com.wanted.wantedpreonboardingbackend.notice.repository.NoticeRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -49,7 +50,18 @@ public class NoticeServiceImpl implements NoticeService {
   }
 
   public List<NoticeResponseDto> getNoticeList() {
-    return null;
+    List<Notice> noticeList = noticeRepository.findAll();
+    List<NoticeResponseDto> result = new ArrayList<>();
+
+    if(noticeList.size()>=1) { // 공고 정보가 있을 경우
+      for (Notice notice : noticeList) {
+        NoticeResponseDto noticeResponseDto = new NoticeResponseDto(notice);
+        result.add(noticeResponseDto);
+      }
+    }else { // 공고가 한개도 없을 경우
+      return null;
+    }
+    return result;
   }
 
 
