@@ -1,6 +1,6 @@
-package com.wanted.wantedpreonboardingbackend.notice.dto;
+package com.wanted.wantedpreonboardingbackend.recruitment.dto;
 
-import com.wanted.wantedpreonboardingbackend.notice.entity.Notice;
+import com.wanted.wantedpreonboardingbackend.recruitment.entity.Notice;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,8 @@
-package com.wanted.wantedpreonboardingbackend.notice.entity;
+package com.wanted.wantedpreonboardingbackend.recruitment.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeRequestDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeRequestDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

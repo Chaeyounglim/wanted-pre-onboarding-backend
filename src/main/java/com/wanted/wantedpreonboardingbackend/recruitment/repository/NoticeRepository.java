@@ -1,6 +1,6 @@
-package com.wanted.wantedpreonboardingbackend.notice.repository;
+package com.wanted.wantedpreonboardingbackend.recruitment.repository;
 
-import com.wanted.wantedpreonboardingbackend.notice.entity.Notice;
+import com.wanted.wantedpreonboardingbackend.recruitment.entity.Notice;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 

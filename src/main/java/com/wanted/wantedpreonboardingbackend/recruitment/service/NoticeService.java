@@ -1,10 +1,10 @@
-package com.wanted.wantedpreonboardingbackend.notice.service;
+package com.wanted.wantedpreonboardingbackend.recruitment.service;
 
-import com.wanted.wantedpreonboardingbackend.notice.dto.ApplyRequestDto;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeDetailResponseDto;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeRequestDto;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeResponseDto;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeSearchDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.ApplyRequestDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeDetailResponseDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeRequestDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeResponseDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeSearchDto;
 import java.util.List;
 
 public interface NoticeService {

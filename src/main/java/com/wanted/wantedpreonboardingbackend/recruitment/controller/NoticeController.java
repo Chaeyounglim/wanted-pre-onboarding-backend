@@ -1,11 +1,11 @@
-package com.wanted.wantedpreonboardingbackend.notice.controller;
+package com.wanted.wantedpreonboardingbackend.recruitment.controller;
 
-import com.wanted.wantedpreonboardingbackend.notice.dto.ApplyRequestDto;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeDetailResponseDto;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeRequestDto;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeResponseDto;
-import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeSearchDto;
-import com.wanted.wantedpreonboardingbackend.notice.service.NoticeServiceImpl;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.ApplyRequestDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeDetailResponseDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeRequestDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeResponseDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.dto.NoticeSearchDto;
+import com.wanted.wantedpreonboardingbackend.recruitment.service.NoticeServiceImpl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

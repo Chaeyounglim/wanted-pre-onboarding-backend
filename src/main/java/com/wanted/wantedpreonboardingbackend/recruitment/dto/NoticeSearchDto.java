@@ -1,4 +1,4 @@
-package com.wanted.wantedpreonboardingbackend.notice.dto;
+package com.wanted.wantedpreonboardingbackend.recruitment.dto;
 
 import lombok.Getter;
 import lombok.Setter;

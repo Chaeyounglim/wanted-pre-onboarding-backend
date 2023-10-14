@@ -1,4 +1,4 @@
-package com.wanted.wantedpreonboardingbackend.notice.entity;
+package com.wanted.wantedpreonboardingbackend.recruitment.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
