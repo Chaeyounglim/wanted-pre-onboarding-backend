@@ -67,7 +67,7 @@
 ### 📃 ERD 테이블
 <details>
 <summary>ERD 관계도</summary>
-<p align="center"><img src="" width="800"/></p>
+<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDAVzN%2FbtsyucsLm2n%2FOjGKEU1AqW7jwlD7180UsK%2Fimg.png" width="800"/></p>
 </details>
 
 
