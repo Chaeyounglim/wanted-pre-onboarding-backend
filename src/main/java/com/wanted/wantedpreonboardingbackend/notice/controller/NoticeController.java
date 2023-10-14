@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -104,6 +103,7 @@ public class NoticeController {
    *
    * @param requestDto 채용 공고 id, 사용자 id 값
    */
+  @PostMapping("/notice/apply")
   public void applyNotice(@RequestBody ApplyRequestDto requestDto) {
     noticeService.applyNotice(requestDto);
   }

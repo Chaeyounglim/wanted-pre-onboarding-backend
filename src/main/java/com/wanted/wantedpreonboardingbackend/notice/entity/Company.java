@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 
 // jpa
 @Entity
-@Table(name= "company")
 public class Company {
+
   /**
    * 컬럼 - 연관관계 컬럼을 제외한 컬럼을 정의합니다.
    */
@@ -21,8 +21,11 @@ public class Company {
   @Column(nullable = false, updatable = false)
   private Long id;
 
+  @Column(name = "username", nullable = false, unique = true)
   private String name;
+
   private String nation;
+
   private String region;
 
 

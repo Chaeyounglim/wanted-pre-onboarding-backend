@@ -1,5 +1,6 @@
 package com.wanted.wantedpreonboardingbackend.notice.service;
 
+import com.wanted.wantedpreonboardingbackend.notice.dto.ApplyRequestDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeDetailResponseDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeRequestDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeResponseDto;
@@ -49,6 +50,12 @@ public interface NoticeService {
    */
   NoticeDetailResponseDto getNoticeDetail(Long noticeId);
 
+
+  /**
+   * 공고 지원하는 메서드
+   * @param requestDto 공고와 지원자 id값
+   */
+  void applyNotice(ApplyRequestDto requestDto);
 
 
 }

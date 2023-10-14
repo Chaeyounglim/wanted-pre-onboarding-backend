@@ -3,8 +3,13 @@ package com.wanted.wantedpreonboardingbackend.notice.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeRequestDto;
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.util.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +31,7 @@ public class Notice {
   private Long id;
 
   @ManyToOne
-  @JoinColumn(name = "company_id")
+  @JoinColumn(name = "company_id", nullable = false)
   private Company company; // 회사
 
   private String title; // 채용 공고 제목

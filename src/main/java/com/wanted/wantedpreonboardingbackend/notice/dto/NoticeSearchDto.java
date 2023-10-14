@@ -1,6 +1,5 @@
 package com.wanted.wantedpreonboardingbackend.notice.dto;
 
-import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 

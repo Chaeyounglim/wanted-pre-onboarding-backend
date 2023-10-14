@@ -5,10 +5,14 @@ import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeDetailResponseDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeRequestDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeResponseDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeSearchDto;
+import com.wanted.wantedpreonboardingbackend.notice.entity.Apply;
 import com.wanted.wantedpreonboardingbackend.notice.entity.Company;
 import com.wanted.wantedpreonboardingbackend.notice.entity.Notice;
+import com.wanted.wantedpreonboardingbackend.notice.entity.User;
+import com.wanted.wantedpreonboardingbackend.notice.repository.ApplyRepository;
 import com.wanted.wantedpreonboardingbackend.notice.repository.CompanyRepository;
 import com.wanted.wantedpreonboardingbackend.notice.repository.NoticeRepository;
+import com.wanted.wantedpreonboardingbackend.notice.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +29,8 @@ public class NoticeServiceImpl implements NoticeService {
 
   private final NoticeRepository noticeRepository;
   private final CompanyRepository companyRepository;
+  private final UserRepository userRepository;
+  private final ApplyRepository applyRepository;
 
   @Override
   public void createNotice(NoticeRequestDto requestDto) {
@@ -100,20 +106,25 @@ public class NoticeServiceImpl implements NoticeService {
   @Override
   public NoticeDetailResponseDto getNoticeDetail(Long noticeId) {
     Notice notice = noticeRepository.findById(noticeId).get();
-
     Long companyId = notice.getCompany().getId();
 
     List<Long> idList = noticeRepository.findNByCompany_Id(companyId).stream()
         .map(Notice::getId)
         .collect(Collectors.toList());
 
-    for (Long aLong : idList) {
-      System.out.println(aLong.toString());
-    }
     return new NoticeDetailResponseDto(notice,idList);
   }
 
+  @Override
   public void applyNotice(ApplyRequestDto requestDto) {
+    User user = userRepository.findById(requestDto.getUserId()).get();
+    Notice notice = noticeRepository.findById(requestDto.getNoticeId()).get();
+
+    if(applyRepository.existsByUser(user)) { // 중복 지원이 아닐 경우
+      Apply apply = new Apply(notice, user);
+      applyRepository.save(apply);
+    }
+
   }
 
 
