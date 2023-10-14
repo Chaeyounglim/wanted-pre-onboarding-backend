@@ -1,8 +1,10 @@
 package com.wanted.wantedpreonboardingbackend.notice.service;
 
 import com.wanted.wantedpreonboardingbackend.notice.dto.ApplyRequestDto;
+import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeDetailResponseDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeRequestDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeResponseDto;
+import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeSearchDto;
 import com.wanted.wantedpreonboardingbackend.notice.entity.Company;
 import com.wanted.wantedpreonboardingbackend.notice.entity.Notice;
 import com.wanted.wantedpreonboardingbackend.notice.repository.CompanyRepository;
@@ -10,6 +12,7 @@ import com.wanted.wantedpreonboardingbackend.notice.repository.NoticeRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -49,6 +52,7 @@ public class NoticeServiceImpl implements NoticeService {
     }
   }
 
+  @Override
   public List<NoticeResponseDto> getNoticeList() {
     List<Notice> noticeList = noticeRepository.findAll();
     List<NoticeResponseDto> result = new ArrayList<>();
@@ -64,12 +68,66 @@ public class NoticeServiceImpl implements NoticeService {
     return result;
   }
 
+  @Override
+  public List<NoticeResponseDto> searchNotice(NoticeSearchDto requestDto) {
+    ArrayList<String> searchKey = new ArrayList<>();
+    List<Notice> noticeList = new ArrayList<>();
+    List<NoticeResponseDto> result = new ArrayList<>();
 
-  public List<NoticeResponseDto> searchNotice(String search) {
+    searchKey.add(requestDto.getCompanyName());
+    searchKey.add(requestDto.getNation());
+    searchKey.add(requestDto.getRegion());
+    searchKey.add(requestDto.getPosition());
+    searchKey.add(requestDto.getTitle());
+    searchKey.add(requestDto.getContent());
+    searchKey.add(requestDto.getSkill());
 
-    return null;
+    // 검색 필드에 따른 검색 후의 공고 목록 추출
+    for (String search : searchKey) {
+      if(search != null) {
+        noticeList = searchNoticeList(searchKey, search);
+      }
+    }
+
+    for (Notice notice : noticeList) {
+      NoticeResponseDto responseDto = new NoticeResponseDto(notice);
+      result.add(responseDto);
+    }
+
+    return result;
+  }
+
+  @Override
+  public NoticeDetailResponseDto getNoticeDetail(Long noticeId) {
+    Notice notice = noticeRepository.findById(noticeId).get();
+
+    Long companyId = notice.getCompany().getId();
+
+    List<Long> idList = noticeRepository.findNByCompany_Id(companyId).stream()
+        .map(Notice::getId)
+        .collect(Collectors.toList());
+
+    for (Long aLong : idList) {
+      System.out.println(aLong.toString());
+    }
+    return new NoticeDetailResponseDto(notice,idList);
   }
 
   public void applyNotice(ApplyRequestDto requestDto) {
   }
+
+
+  private List<Notice> searchNoticeList(ArrayList<String> searchKey, String search) {
+    return switch (searchKey.indexOf(search)) {
+      case 0 -> noticeRepository.findByCompany_NameContaining(search);
+      case 1 -> noticeRepository.findByCompany_NationContaining(search);
+      case 2 -> noticeRepository.findByCompany_RegionContaining(search);
+      case 3 -> noticeRepository.findByPositionContaining(search);
+      case 4 -> noticeRepository.findByTitleContaining(search);
+      case 5 -> noticeRepository.findByContentContaining(search);
+      case 6 -> noticeRepository.findBySkillContaining(search);
+      default -> new ArrayList<>();
+    };
+  }
+
 }

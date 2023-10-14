@@ -28,8 +28,6 @@ public class NoticeResponseDto {
   private String position;
   private Long reward;
   private String skill;
-  private String content;
-  private List<Long> noticeList; // 회사가 올린 다른 채용 공고 id 리스트
 
 
   public NoticeResponseDto(Notice notice) {
@@ -40,7 +38,6 @@ public class NoticeResponseDto {
     this.position = notice.getPosition();
     this.reward = notice.getReward();
     this.skill = notice.getSkill();
-    this.content = notice.getContent();
   }
 
 }

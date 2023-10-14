@@ -1,8 +1,10 @@
 package com.wanted.wantedpreonboardingbackend.notice.controller;
 
 import com.wanted.wantedpreonboardingbackend.notice.dto.ApplyRequestDto;
+import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeDetailResponseDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeRequestDto;
 import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeResponseDto;
+import com.wanted.wantedpreonboardingbackend.notice.dto.NoticeSearchDto;
 import com.wanted.wantedpreonboardingbackend.notice.service.NoticeServiceImpl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -62,7 +64,7 @@ public class NoticeController {
   }
 
 
-  /**
+  /** OK
    * 4-1번 기능 : 채용 공고 목록 조회 메서드
    * url : http://localhost:8081/api/notice [GET]
    *
@@ -74,28 +76,30 @@ public class NoticeController {
   }
 
 
-  /**
+  /** OK
    * 4-2번 기능 : 채용 공고 검색 메서드
    *
-   * @param search 검색하고자 할 키워드
+   * @param requestDto 검색하고자 할 키워드
    * @return 검색한 채용 공고 목록
    */
   @GetMapping("/notices/search")
-  public List<NoticeResponseDto> searchNotice(@RequestParam String search) {
-    return noticeService.searchNotice(search);
+  public List<NoticeResponseDto> searchNotice(@RequestBody NoticeSearchDto requestDto) {
+    return noticeService.searchNotice(requestDto);
   }
 
 
-  /**
+  /** OK
    * 5번 기능
    * 채용 상세 페이지를 가져오는 메서드
    * 해당 회사가 올린 다른 채용공고도 함께 조회
    */
-//  @GetMapping("/notice/detail")
-//  public NoticeResponseDto
+  @GetMapping("/notice/detail")
+  public NoticeDetailResponseDto getNoticeDetail(@RequestBody NoticeRequestDto requestDto) {
+    return noticeService.getNoticeDetail(requestDto.getNoticeId());
+  }
 
 
-  /**
+  /** OK
    * 6번 기능 채용 공고 지원 메서드
    *
    * @param requestDto 채용 공고 id, 사용자 id 값
